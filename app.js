@@ -11,6 +11,10 @@ app.get('/', function(req, res){
     res.send("Hello there, you are an amazing creature");
 });
 
+app.get('/books', function(req, res){
+    res.send("Hello there, I love reading books");
+});
+
 // app.listen takes in a couple of parameters ie port and a callback function
 // which will be executed when app.listen finishes what it is doing
 app.listen(port, function(err){
