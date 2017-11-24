@@ -8,6 +8,7 @@ let port = 5000;
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
+app.use(express.static('src/views'));
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
