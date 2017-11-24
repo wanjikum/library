@@ -6,6 +6,9 @@ let app = express();
 // The port that express listens on on your machine
 let port = 5000;
 
+// Set up a middleware for static folders
+app.use(express.static('public'));
+
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
     res.send("Hello there, you are an amazing creature");
