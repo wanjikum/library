@@ -1,10 +1,10 @@
-let express = require('express');
+var express = require('express');
 
 // creating an instance of express
-let app = express();
+var app = express();
 
 // The port that express listens on on your machine
-let port = 5000;
+var port = 5000;
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
@@ -12,11 +12,11 @@ app.use(express.static('src/views'));
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
-    res.send("Hello there, you are an amazing creature");
+    res.send('Hello there, you are an amazing creature');
 });
 
 app.get('/books', function(req, res){
-    res.send("Hello there, I love reading books");
+    res.send('Hello there, I love reading books');
 });
 
 // app.listen takes in a couple of parameters ie port and a callback function
