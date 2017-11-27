@@ -16,11 +16,13 @@ gulp.task('style', function(){
 });
 
 // Helps us in injecting links to our index.html files
+// First what wiredep does is that it does look for bower..json file
+// Then it checks for the dependancies
 gulp.task('inject', function(){
     var wiredep = require('wiredep').stream; 
     var options = {
-        bowerJson : require("./bower"),
-        directory: "./public/src/lib"
+        bowerJson : require("./bower.json"),
+        directory: "./public/lib"
     }
     return gulp.src('./src/views/*.html')
     .pipe(wiredep(options))
