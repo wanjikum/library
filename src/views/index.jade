@@ -1,6 +1,21 @@
 
 html
     head 
+    //- bower:js
+    script(src='lib/jquery/dist/jquery.js')
+    script(src='lib/bootstrap/dist/js/bootstrap.js')
+    //- endbower
+    //- bower:css
+    link(rel='stylesheet', href='lib/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='lib/font-awesome/css/font-awesome.min.css')
+    //- endbower
+    //- inject:js
+    script(src="/js/app.js")
+    //- endinject
+    //- inject:css
+    link(rel="stylesheet", href="/css/styles.css")
+    //- endinject
+    
         title I love JADE
     body(class='myClass')
         h1(id='myId') You wonder why
