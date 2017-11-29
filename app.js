@@ -6,6 +6,22 @@ var app = express();
 // The port that express listens on on your machine
 var port = process.env.PORT || 5000;
 
+// Add book router using the express router
+ var bookRouter = express.Router();
+
+//  Encapsulate all the book routes here
+bookRouter.route('/')
+    .get(function(req, res){
+        res.send('Hello Books');
+    });
+
+bookRouter.route('/single')
+    .get(function(req, res){
+        res.send('Hello am a single book');
+    })
+
+app.use('/Books', bookRouter);
+
 // Set up a middleware for static folders
 app.use(express.static('public'));
 app.set('views', './src/views');
