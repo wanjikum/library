@@ -57,7 +57,8 @@ bookRouter.route('/')
         },{
         link: '/Authors', 
         text:'Authors'
-        }]
+        }],
+    books: books
     });
 });
 
@@ -69,18 +70,19 @@ bookRouter.route('/single')
 app.use('/Books', bookRouter);
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
-app.get('/', function(req, res){
-    res.render('index', 
-        {title: "hello from title",
-        nav: [{
-            link: '/Books', 
-            text:'Books'
-            },{
-            link: '/Authors', 
-            text:'Authors'
-            }]
-        });
-});
+// app.get('/', function(req, res){
+//     res.render('index', 
+//         {title: "Books",
+//         nav: [{
+//             link: '/Books', 
+//             text:'Books'
+//             },{
+//             link: '/Authors', 
+//             text:'Authors'
+//             }],
+//         books: books
+//         });
+// });
 
 app.get('/Books', function(req, res){
     res.send('Hello there, I love reading books');
