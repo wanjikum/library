@@ -13,7 +13,7 @@ app.set('view engine',  'jade');
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
-    res.render('index');
+    res.render('index', {list: ['a', 'b', 'c']});
 });
 
 app.get('/books', function(req, res){
