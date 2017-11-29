@@ -8,11 +8,12 @@ var port = process.env.PORT || 5000;
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
-app.use(express.static('src/views'));
+app.set('views', './src/views');
+app.set('view engine',  'jade');
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
-    res.send('Hello there, you are an amazing creature');
+    res.render('index');
 });
 
 app.get('/books', function(req, res){

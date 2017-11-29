@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "gulp-nodemon": "^2.2.1",
+    "jade": "^1.11.0",
     "wiredep": "^4.0.0"
   },
   "devDependencies": {
