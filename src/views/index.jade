@@ -1,7 +1,10 @@
 html
     head 
         title I love JADE
-    body
-        h1 You wonder why
+    body(class=['myClass'])
+        h1(id=['myId']) You wonder why
         p
             h3 hahaaaa.. 
+        ul
+            each val in ['1', '2', '3', '4', '5','6', '7']
+                li= val
