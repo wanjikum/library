@@ -13,11 +13,24 @@ app.set('view engine',  'ejs');
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
-    res.render('index', {title: "hello from title", list: ['a', 'b', 'c']});
+    res.render('index', 
+        {title: "hello from title",
+        nav: [{
+            link: '/Books', 
+            text:'Books'
+            },{
+            link: '/Authors', 
+            text:'Authors'
+            }]
+        });
 });
 
-app.get('/books', function(req, res){
+app.get('/Books', function(req, res){
     res.send('Hello there, I love reading books');
+});
+
+app.get('/Authors', function(req, res){
+    res.send('Hello there, I am an author');
 });
 
 // app.listen takes in a couple of parameters ie port and a callback function
