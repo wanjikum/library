@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 
 // The port that express listens on on your machine
-var port = 5000;
+var port = process.env.PORT || 5000;
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
