@@ -6,30 +6,40 @@ var app = express();
 // The port that express listens on on your machine
 var port = process.env.PORT || 5000;
 
+var nav = [
+    {
+        link: '/Books', 
+        text:'Books'
+    },{
+        link: '/Authors', 
+        text:'Authors'
+    }
+];
+
+
 // Add book router using the express router
-var bookRouter = require('./src/Routes/bookRoutes');
+var bookRouter = require('./src/Routes/bookRoutes')(nav);
 
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
 app.set('views', './src/views');
 app.set('view engine',  '.ejs');
- 
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
-// app.get('/', function(req, res){
-//     res.render('index', 
-//         {title: "Books",
-//         nav: [{
-//             link: '/Books', 
-//             text:'Books'
-//             },{
-//             link: '/Authors', 
-//             text:'Authors'
-//             }],
-//         books: books
-//         });
-// });
+app.get('/', function(req, res){
+    res.render('index', 
+        {title: "Books",
+        nav: [{
+            link: '/Books', 
+            text:'Book'
+            },{
+            link: '/Authors', 
+            text:'Author'
+            }],
+        books: books
+        });
+});
 
 app.use('/Books', bookRouter);
 
