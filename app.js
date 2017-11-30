@@ -7,67 +7,14 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 // Add book router using the express router
- var bookRouter = express.Router();
+var bookRouter = require('./src/Routes/bookRoutes');
 
- var books = [{
-                title: 'I love millicent',
-                genre: 'self',
-                author: 'me',
-                read: true
-            },
-            {
-                title: 'I love felistas',
-                genre: 'friends',
-                author: 'felistas',
-                read: false
-            },
-            {
-                title: 'I love larry',
-                genre: 'self',
-                author: 'larry',
-                read: false
-            },
-            {
-                title: 'I love sarah',
-                genre: 'family',
-                author: 'sarah',
-                read: true
-            },
-            {
-                title: 'I love victor',
-                genre: 'brother',
-                author: 'victor',
-                read: true
-            }
-        ];
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
 app.set('views', './src/views');
-app.set('view engine',  'ejs');
-
-//  Encapsulate all the book routes here
-bookRouter.route('/')
-.get(function(req, res){
-    res.render('books',
-    {title: "hello from title",
-    nav: [{
-        link: '/Books/single', 
-        text:'Single Book'
-        },{
-        link: '/Authors', 
-        text:'Authors'
-        }],
-    books: books
-    });
-});
-
-bookRouter.route('/single')
-.get(function(req, res){
-    res.send('Hello am a single book');
-})
-
-app.use('/Books', bookRouter);
+app.set('view engine',  '.ejs');
+ 
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 // app.get('/', function(req, res){
@@ -83,6 +30,8 @@ app.use('/Books', bookRouter);
 //         books: books
 //         });
 // });
+
+app.use('/Books', bookRouter);
 
 app.get('/Books', function(req, res){
     res.send('Hello there, I love reading books');
