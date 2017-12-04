@@ -1,51 +1,28 @@
 var express = require('express');
 var bookRouter = express.Router();
+var mongodb = require('mongodb').MongoClient;
 
 
 
 //  Encapsulate all the book routes here
 var router = function (nav){
-    var books = [
-        {
-            title: 'I love millicent',
-            genre: 'self',
-            author: 'me',
-            read: true
-        },
-        {
-            title: 'I love felistas',
-            genre: 'friends',
-            author: 'felistas',
-            read: false
-        },
-        {
-            title: 'I love larry',
-            genre: 'self',
-            author: 'larry',
-            read: false
-        },
-        {
-            title: 'I love sarah',
-            genre: 'family',
-            author: 'sarah',
-            read: true
-        },
-        {
-            title: 'I love victor',
-            genre: 'brother',
-            author: 'victor',
-            read: true
-        }
-    ];
     bookRouter.route('/')
         .get(function(req, res){
-            res.render('booksListView',
-                {
-                    title: "book list",
-                    nav: nav,
-                    books: books
-                });
+            var url = 'mongodb://localhost:27017/libraryApp';
+            mongodb.connect(url, function(err, db ){
+                var collection = db.collection('books');
+                var results = collection.find({}).toArray(
+                    function(err, results){
+                        res.render('booksListView',
+                        {
+                            title: "book list",
+                            nav: nav,
+                            books: results
+                        });
+                    }
+                );
             });
+        })
 
     bookRouter.route('/:id')
         .get(function(req, res){
