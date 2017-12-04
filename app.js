@@ -19,6 +19,7 @@ var nav = [
 
 // Add book router using the express router
 var bookRouter = require('./src/Routes/bookRoutes')(nav);
+var adminRouter = require('./src/Routes/adminRoutes')(nav);
 
 
 // Set up a middleware for static folders
@@ -42,6 +43,7 @@ app.get('/', function(req, res){
 });
 
 app.use('/Books', bookRouter);
+app.use('/Admin', adminRouter);
 
 app.get('/Books', function(req, res){
     res.send('Hello there, I love reading books');
