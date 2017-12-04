@@ -1,6 +1,7 @@
 var express = require('express');
 var bookRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
 
 
 
@@ -26,16 +27,24 @@ var router = function (nav){
 
     bookRouter.route('/:id')
         .get(function(req, res){
-            var id = req.params.id
-            res.render('bookView',
-            {
-                title: "single book",
-                nav: nav,
-                book: books[id]
-            });
+            var url = 'mongodb://localhost:27017/libraryApp';
+            
+            mongodb.connect(url, function(err, db ){
+                var collection = db.collection('books');
+                var id = new objectId(req.params.id);
+                var results = collection.findOne({_id: id},
+                    function( err, results){
+                        res.render('bookView',
+                        {
+                            title: "book list",
+                            nav: nav,
+                            book: results
+                        });
+                    }
+                );
         })
-        return bookRouter;
-    }
+    })
+    return bookRouter;
+}
 
 module.exports = router;
-

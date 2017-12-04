@@ -21,38 +21,38 @@ var nav = [
 var bookRouter = require('./src/Routes/bookRoutes')(nav);
 var adminRouter = require('./src/Routes/adminRoutes')(nav);
 
-var books = [
-    {
-        title: 'I love millicent',
-        genre: 'self',
-        author: 'me',
-        read: true
-    },
-    {
-        title: 'I love felistas',
-        genre: 'friends',
-        author: 'felistas',
-        read: false
-    },
-    {
-        title: 'I love larry',
-        genre: 'self',
-        author: 'larry',
-        read: false
-    },
-    {
-        title: 'I love sarah',
-        genre: 'family',
-        author: 'sarah',
-        read: true
-    },
-    {
-        title: 'I love victor',
-        genre: 'brother',
-        author: 'victor',
-        read: true
-    }
-];
+// var books = [
+//     {
+//         title: 'I love millicent',
+//         genre: 'self',
+//         author: 'me',
+//         read: true
+//     },
+//     {
+//         title: 'I love felistas',
+//         genre: 'friends',
+//         author: 'felistas',
+//         read: false
+//     },
+//     {
+//         title: 'I love larry',
+//         genre: 'self',
+//         author: 'larry',
+//         read: false
+//     },
+//     {
+//         title: 'I love sarah',
+//         genre: 'family',
+//         author: 'sarah',
+//         read: true
+//     },
+//     {
+//         title: 'I love victor',
+//         genre: 'brother',
+//         author: 'victor',
+//         read: true
+//     }
+// ];
 
 
 // Set up a middleware for static folders
