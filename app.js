@@ -3,6 +3,8 @@ var express = require('express');
 // creating an instance of express
 var app = express();
 
+// automatically parsers the body of what comes to our request 
+// and sets a json object for us 
 var bodyParser = require('body-parser');
 
 // The port that express listens on on your machine
@@ -20,15 +22,18 @@ var nav = [
 
 
 // Add book router using the express router
-var authRouter = require('./src/Routes/authRoutes');
+var authRouter = require('./src/Routes/authRoutes')(nav);
 var bookRouter = require('./src/Routes/bookRoutes')(nav);
 var adminRouter = require('./src/Routes/adminRoutes')(nav);
  
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
+
+// if its a json object, it creates a req.body for us use
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+// creates a req.body for url encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', './src/views');
 app.set('view engine',  '.ejs');
