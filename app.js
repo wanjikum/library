@@ -3,6 +3,8 @@ var express = require('express');
 // creating an instance of express
 var app = express();
 
+var bodyParser = require('body-parser');
+
 // The port that express listens on on your machine
 var port = process.env.PORT || 5000;
 
@@ -18,47 +20,23 @@ var nav = [
 
 
 // Add book router using the express router
+var authRouter = require('./src/Routes/authRoutes');
 var bookRouter = require('./src/Routes/bookRoutes')(nav);
 var adminRouter = require('./src/Routes/adminRoutes')(nav);
-
-// var books = [
-//     {
-//         title: 'I love millicent',
-//         genre: 'self',
-//         author: 'me',
-//         read: true
-//     },
-//     {
-//         title: 'I love felistas',
-//         genre: 'friends',
-//         author: 'felistas',
-//         read: false
-//     },
-//     {
-//         title: 'I love larry',
-//         genre: 'self',
-//         author: 'larry',
-//         read: false
-//     },
-//     {
-//         title: 'I love sarah',
-//         genre: 'family',
-//         author: 'sarah',
-//         read: true
-//     },
-//     {
-//         title: 'I love victor',
-//         genre: 'brother',
-//         author: 'victor',
-//         read: true
-//     }
-// ];
-
+ 
 
 // Set up a middleware for static folders
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
 app.set('views', './src/views');
 app.set('view engine',  '.ejs');
+
+app.use('/Books', bookRouter);
+app.use('/Admin', adminRouter);
+app.use('/auth', authRouter);
+
 
 // Open up your browser and to the address bar write "http://localhost:5000/"
 app.get('/', function(req, res){
@@ -71,12 +49,11 @@ app.get('/', function(req, res){
             link: '/Authors', 
             text:'Author'
             }],
-        books: books
+        // books: books
         });
 });
 
-app.use('/Books', bookRouter);
-app.use('/Admin', adminRouter);
+
 
 app.get('/Books', function(req, res){
     res.send('Hello there, I love reading books');
