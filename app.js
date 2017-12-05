@@ -55,7 +55,7 @@ app.get('/', function(req, res){
         {title: "Books",
         nav: [{
             link: '/Books', 
-            text:'Book'
+            text:'Books'
             },{
             link: '/Authors', 
             text:'Author'
@@ -66,13 +66,13 @@ app.get('/', function(req, res){
 
 
 
-app.get('/Books', function(req, res){
-    res.send('Hello there, I love reading books');
-});
+// app.get('/Books', function(req, res){
+//     res.send('Hello there, I love reading books');
+// });
 
-app.get('/Authors', function(req, res){
-    res.send('Hello there, I am an author');
-});
+// app.get('/Authors', function(req, res){
+//     res.send('Hello there, I am an author');
+// });
 
 // app.listen takes in a couple of parameters ie port and a callback function
 // which will be executed when app.listen finishes what it is doing

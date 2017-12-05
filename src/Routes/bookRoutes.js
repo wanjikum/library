@@ -7,6 +7,12 @@ var objectId = require('mongodb').ObjectID;
 
 //  Encapsulate all the book routes here
 var router = function (nav){
+    bookRouter.use(function(req, res, next){
+        if(!req.user){
+            res.redirect('/')
+        }
+        next();
+    });
     bookRouter.route('/')
         .get(function(req, res){
             var url = 'mongodb://localhost:27017/libraryApp';
