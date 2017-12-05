@@ -11,12 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.14.1",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "gulp-nodemon": "^2.2.1",
     "jade": "^1.11.0",
     "mongodb": "^2.2.33",
+    "passport": "^0.4.0",
     "wiredep": "^4.0.0"
   },
   "devDependencies": {

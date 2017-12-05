@@ -6,6 +6,9 @@ var app = express();
 // automatically parsers the body of what comes to our request 
 // and sets a json object for us 
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var session = require('express-session');
 
 // The port that express listens on on your machine
 var port = process.env.PORT || 5000;
@@ -34,7 +37,10 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 // creates a req.body for url encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(session({secret: 'Milly will grow'}));
 
+require('./src/config/passport')(app);
 app.set('views', './src/views');
 app.set('view engine',  '.ejs');
 
