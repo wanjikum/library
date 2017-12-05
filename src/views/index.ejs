@@ -103,6 +103,19 @@
             <br>
             <div class="col-md-2 col-sm-3 text-center">
               Sign In
+              <form name="signInForm"
+                    action="/auth/signIn"
+                    method="post">
+                <label><b>Username: </b></label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <br/>
+            
+                <label><b>Password: </b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <br/>
+                <button type="submit" class="signupbtn">Sign In</button>
+                <br/>
+              </form>
             </div>
             <div class="col-md-10 col-sm-9">
               Sign Up
