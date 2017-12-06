@@ -3,6 +3,13 @@ var objectId = require('mongodb').ObjectID;
 
 var bookController = function(bookService, nav){
 
+    var middleware = function(req, res, next){
+        // if(!req.user){
+        //     res.redirect('/')
+        // }
+        next();
+    };
+
     var getIndex = function(req, res){
         var url = 'mongodb://localhost:27017/libraryApp';
         mongodb.connect(url, function(err, db ){
@@ -28,19 +35,24 @@ var bookController = function(bookService, nav){
             var id = new objectId(req.params.id);
             var results = collection.findOne({_id: id},
                 function( err, results){
-                    res.render('bookView',
-                    {
-                        title: "book list",
-                        nav: nav,
-                        book: results
-                    });
+                    console.log("my book service", bookService)
+                    bookService.getBookById(results.id, function(err, book){
+                        results.book = book;
+                        res.render('bookView',
+                        {
+                            title: "book list",
+                            nav: nav,
+                            book: results
+                        });
+                    })
                 }
             );
     })
 };
     return {
         getIndex: getIndex,
-        getById: getById
+        getById: getById,
+        middleware: middleware
     }
 
 }
