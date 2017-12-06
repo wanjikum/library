@@ -7,6 +7,8 @@ var objectId = require('mongodb').ObjectID;
 
 //  Encapsulate all the book routes here
 var router = function (nav){
+    var bookController = require('../controllers/bookController')(null, nav);
+
     bookRouter.use(function(req, res, next){
         if(!req.user){
             res.redirect('/')
@@ -14,10 +16,10 @@ var router = function (nav){
         next();
     });
     bookRouter.route('/')
-        .get()
+        .get(bookController.getIndex)
 
     bookRouter.route('/:id')
-        .get()
+        .get(bookController.getById)
     return bookRouter;
 }
 

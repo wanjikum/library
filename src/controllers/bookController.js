@@ -1,3 +1,6 @@
+var mongodb = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
+
 var bookController = function(bookService, nav){
 
     var getIndex = function(req, res){
