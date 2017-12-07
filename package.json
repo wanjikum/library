@@ -17,11 +17,13 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "gulp-nodemon": "^2.2.1",
+    "http": "0.0.0",
     "jade": "^1.11.0",
     "mongodb": "^2.2.33",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "wiredep": "^4.0.0"
+    "wiredep": "^4.0.0",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
